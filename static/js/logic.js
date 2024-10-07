@@ -1,13 +1,13 @@
-// Initialize the map on the "map" div with a given center and zoom
+// Initialize the map 
 var mymap = L.map('map').setView([37.8, -96], 4);
 
-// Add a tile layer to the map (OpenStreetMap in this case)
+// Add a tile layer to the map 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   maxZoom: 19,
-  attribution: '© OpenStreetMap contributors'
+  attribution: 
 }).addTo(mymap);
 
-// URL to fetch earthquake data from
+// URL to fetch earthquake data
 var earthquakesUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
 
 // Fetch earthquake data and add to map
@@ -20,7 +20,7 @@ fetch(earthquakesUrl)
    pointToLayer: function(feature, latlng) {
          if (!feature.properties || !feature.geometry) {
           console.error('Invalid feature skipped:', feature);
-          return; // Skip this feature if it doesn't have the required properties or geometry
+          return; 
          }
          var geojsonMarkerOptions = {
             radius: 4 * feature.properties.mag,
@@ -49,7 +49,7 @@ function getColor(depth) {
 var legend = L.control({position: 'bottomright'});
 legend.onAdd = function(map) {
    var div = L.DomUtil.create('div', 'info legend'),
-       grades = [0, 10, 30, 50, 70, 90], // Depth ranges
+       grades = [0, 10, 30, 50, 70, 90], 
        labels = [];
    for (var i = 0; i < grades.length; i++) {
       div.innerHTML +=
